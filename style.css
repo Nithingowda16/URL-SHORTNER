@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Questrial',  'sans';
+}
+
+body{
+    background: linear-gradient(0deg, #1f1e1e 60%, #fbff00 40%);
+    min-height: 100vh;
+    color: white;
+}
+
+.title{
+    color: #1f1e1e;
+    text-align: center;
+    font-size: 4em;
+    padding-top: 15vh;
+}
+.txt{
+    color:  #1f1e1e;
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: 12vh;
+}
+
+form{
+    text-align: center;
+    padding-top: 10vh;
+}
+
+.input-text{
+    text-align: center;
+    font-size: 1.4em;
+    background-color: #fbff00;
+    color: #1f1e1e;
+    border-radius: 7px;
+    border: none;
+    padding: 10px;
+}
+
+.submit{
+    margin-top: 2vh;
+    background-color: #1f1e1e;
+    color: #fbff00;
+    border: 1px solid #fbff00;
+    font-size: 1.2em;
+    padding: 10px 25px 10px 25px;
+    border-radius: 7px;
+    min-width: 275px;
+}
+
+.submit:hover{
+    color: rgb(51, 255, 0);
+    border: 1px solid rgb(51, 255, 0);
+}
+
+.foot{
+    color: #fbff00b6;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    font-size: 1.2em;
+}
