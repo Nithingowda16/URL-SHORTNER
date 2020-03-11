@@ -21,7 +21,7 @@ function generateRandomString($length = 6) {
 if (isset($_GET["input"])) {
     $title = generateRandomString();
     $url = $_GET['input'];
-	$res = $connect->prepare("INSERT INTO links VALUES('',?,?)");
+	$res = $connect->prepare("INSERT INTO links VALUES('',?,?,'')");
   	$res->bind_param("ss",$url,$title);
   	$res->execute();
     //$return = 'http://tempcloud.ml?link='.$siteurl."/".$title;
