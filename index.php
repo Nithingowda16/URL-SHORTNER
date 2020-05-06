@@ -70,7 +70,7 @@
 
         <div class="section-title" data-aos="fade-up">
           <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit eius consequatur ex aliquid fuga eum quidem</p>
+          <p>Why Choose us ?</p>
         </div>
 
         <div class="row">
@@ -149,7 +149,7 @@
                     $id=0;
                     while($row = $result->fetch_assoc()) {
                         $id=$id+1;
-                        echo "<tr><td scope=\"row\">".$id."</td><td>".$row["url"]."</td><td>".$row["title"]."</td><td>".$row["Clicks"]."</td><td>".$row["created_at"]."</td><td>".$row["recent_access"]."</td></tr>";
+                        echo "<tr><td scope=\"row\">".$id."</td><td>".$row["url"]."</td><td><a href=\"https://nith.ml/".$row["title"]."\" style=\"color:blue;\">".$row["title"]."</a></td><td>".$row["Clicks"]."</td><td>".$row["created_at"]."</td><td>".$row["recent_access"]."</td></tr>";
                     }
                 } else {
                     echo "No links found";
