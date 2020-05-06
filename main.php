@@ -1,9 +1,11 @@
 <?php
-$host = 'sql310.epizy.com';
-$dbuser = 'epiz_25276881'; 
-$dbpass = 'YECyNgNCQsC';
-$dbname = 'epiz_25276881_nithin';
-$siteurl = 'http://nith.ml'; 
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+$host = '127.0.0.1';
+$dbuser = 'nith.ml'; 
+$dbpass = '88888888';
+$dbname = 'nith.ml';
 $connect = new mysqli($host, $dbuser, $dbpass, $dbname);
 if (!$connect) {
     echo '<script>alert("DATABASE NOT CONNECTED")</script>';
@@ -18,30 +20,56 @@ function generateRandomString($length = 6) {
     return $randomString;
 }
 if (isset($_GET['title'])) {
-    $res = $connect->prepare("SELECT * FROM links WHERE title=?");
-    $res->bind_param("s", $_GET['title']);
-    $res->execute();
-    $goto = $res->get_result()->fetch_array();
-    $g = $goto[1];
-    $clicks=$goto[3] + 1;
-    $echo = '<script>console.log("'.$clicks.'")</script>'; 
-    echo $echo;
-    $linkk = 'UPDATE links SET Clicks = '.$clicks.' WHERE title=\''.$_GET['title'].'\'';
-    echo $linkk;
-    $increment = $connect->prepare($linkk);
-    $increment->execute();
-    header("Location: $g");
+	$titl=$_GET['title'];
+    $query = "SELECT title from links where title='".$titl."'";
+    $result = $connect->query($query);
+    if($result->num_rows > 0){
+        $clicks = "SELECT url,Clicks from links where title='".$titl."'";
+        $result = $connect->query($clicks);
+    	$rarray=$result->fetch_assoc();
+    	$newClick = intval($rarray["Clicks"])+1;
+        $sql = "UPDATE links SET Clicks=".$newClick." WHERE title='".$titl."'";
+        $update = $connect->query($sql);
+        $sql = "UPDATE links SET recent_access= now() WHERE title='".$titl."'";
+    	$update = $connect->query($sql);
+    	header("Location: ".$rarray["url"]);
+    }
+    else{
+        header("Location: https://tempcloud.ml");
+    }
 }
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])){
+    setdb();
+}
+
+function setdb(){
+	$host = '127.0.0.1';
+    $dbuser = 'nith.ml'; 
+    $dbpass = '88888888';
+    $dbname = 'nith.ml';
+	$siteurl = 'https://nith.ml'; 
+	$connect = new mysqli($host, $dbuser, $dbpass, $dbname);
     $title = generateRandomString();
   	if (substr($_POST['textarea'], 0, 4) != "http") {
       $url = "http://".$_POST['textarea'];
     } else {
     $url = $_POST['textarea'];
     }
-	$res = $connect->prepare("INSERT INTO links VALUES('',?,?,'')");
-  	$res->bind_param("ss",$url,$title);
-  	$res->execute();
-    echo "<script>prompt('YOUR SHORTENED URL IS:', '".$siteurl."/".$title."');</script>"; 
+    $query = "SELECT title from links where title='".$title."'";
+    $result = $connect->query($query);
+    if($result->num_rows > 0){
+        setdb();
+        die();
+    }
+    else{
+        $sql = "INSERT INTO links (url, title, Clicks, created_at, user)
+        VALUES ('".$url."', '".$title."','0',now(),'".$_POST["user"]."')";
+        if ($connect->query($sql) === TRUE) {
+        echo " ";
+        } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+        echo "<script>prompt('YOUR SHORTENED URL IS:', '".$siteurl."/".$title."');</script>"; 
+    }
 }
 ?>
