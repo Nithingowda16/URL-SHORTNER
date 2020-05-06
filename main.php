@@ -3,9 +3,9 @@ ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
 $host = '127.0.0.1';
-$dbuser = 'nith.ml'; 
-$dbpass = '88888888';
-$dbname = 'nith.ml';
+$dbuser = 'secret'; 
+$dbpass = 'secret';
+$dbname = 'secret';
 $connect = new mysqli($host, $dbuser, $dbpass, $dbname);
 if (!$connect) {
     echo '<script>alert("DATABASE NOT CONNECTED")</script>';
@@ -44,9 +44,9 @@ if (isset($_POST['submit'])){
 
 function setdb(){
 	$host = '127.0.0.1';
-    $dbuser = 'nith.ml'; 
-    $dbpass = '88888888';
-    $dbname = 'nith.ml';
+    $dbuser = 'secret'; 
+    $dbpass = 'secret';
+    $dbname = 'secret';
 	$siteurl = 'https://nith.ml'; 
 	$connect = new mysqli($host, $dbuser, $dbpass, $dbname);
     $title = generateRandomString();
