@@ -1,5 +1,4 @@
 <?php include 'main.php'; ?>
-<?php include 'config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,15 +21,6 @@
   <link href="assets/css/style.css" rel="stylesheet">
   <meta name="google-signin-client_id" content="408902227454-66nc070rqp0s3h1ic4vbiof65u9hs3n8.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://www.google.com/recaptcha/api.js?render=6Ld9sQAVAAAAABYTMt2kBplwTLvqLxteJDZe52rm"></script>
-<script>
-  grecaptcha.ready(function() {
-      grecaptcha.execute('6Ld9sQAVAAAAABYTMt2kBplwTLvqLxteJDZe52rm', {action: 'homepage'}).then(function(token) {
-         // console.log(token);
-         document.getElementById("token").value = token;
-      });
-  });
-  </script>
 </head>
 <body>
   <section id="hero">
@@ -40,7 +30,6 @@
       <h2 data-aos="fade-up">The shortest URL shortner</h2>
       <form method="POST" action="">
       <input type="text" name="user" value="<?php if(isset($_COOKIE["userID"])) {echo $_COOKIE["userID"];}else{echo 1;}?>" hidden>
-      <input type="hidden" id="token" name="token">
       <input type="text" name="textarea" class="form-control" id="name" placeholder="Enter large url" data-type="url" data-msg="Please enter a valid URL" style="max-width: 500px;padding: 1.3em ; margin-top: 20px;"/>
       <button data-aos="fade-up" class="btn-get-started scrollto" type="submit" name="submit" style="border:none;">Shorten It</button>
       </form>
@@ -65,7 +54,6 @@
           
           <li><a href="#analytics">Analytics</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="apidocs.php" target="_blank">API</a></li>
 
         </ul>
       </nav>
@@ -75,90 +63,34 @@
 
   <main id="main">
 
-<section id="pricing" class="pricing section-bg">
-      <div class="container">
-		<?php
-      			  
-                  $conn = new mysqli($host, $dbuser, $dbpass, $dbname);
-                  if (!$conn) {
-                      echo '<script>alert("DATABASE NOT CONNECTED")</script>';
-                  }
-      			  $query = "SELECT COUNT(id) AS total from links";
-                  $result = $conn->query($query);
-                  $row = $result->fetch_assoc();
-      			  $links = $row["total"];
-      			  $query = "SELECT SUM(clicks) AS total from links";
-                  $result = $conn->query($query);
-                  $row = $result->fetch_assoc();
-      			  $clicks = $row["total"];
-     	 ?>
-        <div class="section-title" data-aos="fade-up">
-          <h2>Stats</h2>
-          <p>Refresh the page to see them update</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6" style="margin-bottom:10px;">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-            <h3>Links till date</h3>
-              <h4><?php echo $links + 200;?><span> links</span></h4>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" style="margin-bottom:10px;">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-            <h3>Total redirections</h3>
-              <h4><?php echo $clicks;?><span> redirections</span></h4>
-            </div>
-          </div>
-        
-        <div class="col-lg-4 col-md-6">
-            <div class="box" data-aos="zoom-in" data-aos-delay="100">
-            <h3>Server uptime</h3>
-              <h4><?php echo floor(preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')) / 3600);?><span> hours</span></h4>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-  
-  
-  
+    
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
           <h2>Services</h2>
-          <p>Why Choose us ?</p>
+          <p>Magnam dolores commodi suscipit eius consequatur ex aliquid fuga eum quidem</p>
         </div>
 
         <div class="row">
           <div class="col-lg-6 order-2 order-lg-1">
-          <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-laptop"></i>
-              <h4>Chrome Extension</h4>
-          <p>You can now get your links shortened at the comfort of your browser tab <a href="https://nith.ml/extpopup" target="_blank">Click here to install</a></p>
-            </div><br>
             <div class="icon-box mt-5 mt-lg-0" data-aos="fade-up">
               <i class="bx bx-fast-forward"></i>
               <h4>50ms response time</h4>
               <p>Get your links shortned at the highest speed</p>
             </div>
-            <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="100">
               <i class="bx bxs-server"></i>
               <h4>100% uptime</h4>
               <p>We try provide 24 x 7 uptime of our servers</p>
             </div>
-            <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="200">
               <i class="bx bx-link"></i>
               <h4>Short URLs</h4>
               <p>We provide you easy to remember short URLs</p>
             </div>
-            <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="300">
               <i class="bx bx-bar-chart-alt"></i>
               <h4>Analytics</h4>
               <p>You can get detailed analytics on your short link's usage</p>
@@ -192,7 +124,6 @@
                   <th scope="col">URL</th>
                   <th scope="col">Short Link</th>
                   <th scope="col">Clicks</th>
-                  <th scope="col">Delete</th>
                   <th scope="col">Created at</th>
                   <th scope="col">Last accessed</th>
                 </tr>
@@ -201,16 +132,24 @@
               <?php
                 $cookie_name = "userID";
                 if(!isset($_COOKIE[$cookie_name])) {
-                    echo " ";
+                    echo "Sign-in to see analytics of your shortlinks";
                 } else {
-                  $query = "SELECT * from links where user='".$_COOKIE[$cookie_name]."'";
+                  $host = '127.0.0.1';
+                  $dbuser = 'nith.ml'; 
+                  $dbpass = '88888888';
+                  $dbname = 'nith.ml';
+                  $siteurl = 'https://nith.ml'; 
+                  $conn = new mysqli($host, $dbuser, $dbpass, $dbname);
+                  if (!$conn) {
+                      echo '<script>alert("DATABASE NOT CONNECTED")</script>';
+                  }
+                  $query = "SELECT id,url,title,Clicks,created_at,recent_access from links where user='".$_COOKIE[$cookie_name]."'";
                   $result = $conn->query($query);
                   if ($result->num_rows > 0) {
                     $id=0;
-                    $usermod = substr($_COOKIE[$cookie_name],10,11)."9481599862".substr($_COOKIE[$cookie_name],0,10)."4342039881";
                     while($row = $result->fetch_assoc()) {
                         $id=$id+1;
-                        echo "<tr><td scope=\"row\">".$id."</td><td style=\"max-width:300px;overflow:hidden;text-overflow:ellipsis;\">".$row["url"]."</td><td><a href=\"https://nith.ml/".$row["title"]."\" style=\"color:blue;\">".$row["title"]."</a></td><td>".$row["Clicks"]."</td><td><a href=\"delete.php?title=".$row["title"]."&user=".$usermod."\"><button class=\"no-style-button\"><i class=\"bx bx-trash\"></i></button></a></td><td>".$row["created_at"]."</td><td>".$row["recent_access"]."</td></tr>";
+                        echo "<tr><td scope=\"row\">".$id."</td><td>".$row["url"]."</td><td>".$row["title"]."</td><td>".$row["Clicks"]."</td><td>".$row["created_at"]."</td><td>".$row["recent_access"]."</td></tr>";
                     }
                 } else {
                     echo "No links found";
@@ -244,27 +183,18 @@
       <i class="bx bxs-quote-right"></i>
     </div>
     <div class="owl-carousel testimonials-carousel">
-	<div class="testimonial-item">
-        <p>
-          Ever wondered what's the benefit of being short? You'll find this answer here
-        </p>
-        <img src="assets/img/testimonials/sid.jpg" class="testimonial-img" alt="">
-        <h3>Siddhanth Hegde</h3>
-        <h4>Data Scientist</h4>
-     </div>
-    
+
       <div class="testimonial-item">
         <p>
           Nith's url shortner: your URLs shorter than shortest
         </p>
-        <img src="assets/img/testimonials/babu.jpeg" class="testimonial-img" alt="">
+        <img src="assets/img/testimonials/babu.jpg" class="testimonial-img" alt="">
         <h3>Shreyas MK</h3>
-        <h4>Coder</h4>
+        <h4>Chef</h4>
       </div>
 
       <div class="testimonial-item">
         <p>
-        Best and easiest URL shortner I have ever seen.
           Keep things 'Short' because life is 'Short'
         </p>
         <img src="assets/img/testimonials/bhuvan.jpg" class="testimonial-img" alt="">
@@ -313,14 +243,14 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="mail.php" method="post" role="form" class="php-email-form" data-aos="fade-left">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form" data-aos="fade-left">
               <div class="form-row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="email" class="form-control" name="from" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                   <div class="validate"></div>
                 </div>
               </div>
@@ -329,7 +259,7 @@
                 <div class="validate"></div>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="body" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                 <div class="validate"></div>
               </div>
               <div class="mb-3">

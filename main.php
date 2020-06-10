@@ -1,11 +1,6 @@
+<?php include 'config.php'; ?>
 <?php
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(-1);
-$host = '127.0.0.1';
-$dbuser = 'secret'; 
-$dbpass = 'secret';
-$dbname = 'secret';
+
 $connect = new mysqli($host, $dbuser, $dbpass, $dbname);
 if (!$connect) {
     echo '<script>alert("DATABASE NOT CONNECTED")</script>';
@@ -39,15 +34,35 @@ if (isset($_GET['title'])) {
     }
 }
 if (isset($_POST['submit'])){
-    setdb();
+    $url = "https://www.google.com/recaptcha/api/siteverify";
+		$data = [
+			'secret' => "6Ld9sQAVAAAAALDJTkbv9Ajg-6C1ZEu6CEa64uPy",
+			'response' => $_POST['token'],
+		];
+
+		$options = array(
+		    'http' => array(
+		      'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+		      'method'  => 'POST',
+		      'content' => http_build_query($data)
+		    )
+		  );
+
+		$context  = stream_context_create($options);
+  		$response = file_get_contents($url, false, $context);
+
+		$res = json_decode($response, true);
+		if($res['success']) {
+			setdb();
+		} else {
+			echo '<div class="alert alert-warning">
+					  <strong>reCAPTCHA verification failed</strong> You are not a human.
+				  </div>';
+		}
 }
 
 function setdb(){
-	$host = '127.0.0.1';
-    $dbuser = 'secret'; 
-    $dbpass = 'secret';
-    $dbname = 'secret';
-	$siteurl = 'https://nith.ml'; 
+ 
 	$connect = new mysqli($host, $dbuser, $dbpass, $dbname);
     $title = generateRandomString();
   	if (substr($_POST['textarea'], 0, 4) != "http") {

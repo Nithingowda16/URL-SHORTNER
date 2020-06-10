@@ -1,3 +1,8 @@
+// if(screen.width<1000){
+// 	document.querySelector('.analytics-table').className += " table-responsive";
+// }
+
+
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);

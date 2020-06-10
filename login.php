@@ -1,13 +1,9 @@
+<?php include 'config.php'; ?>
 <?php
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
 
-$host = '127.0.0.1';
-$dbuser = 'secret'; 
-$dbpass = 'secret';
-$dbname = 'secret';
-$siteurl = 'https://nith.ml'; 
 $conn = new mysqli($host, $dbuser, $dbpass, $dbname);
 if (!$conn) {
     echo '<script>alert("DATABASE NOT CONNECTED")</script>';
