@@ -1711,3 +1711,15 @@ section {
   font-size: 13px;
   padding-top: 5px;
 }
+.no-style-button{
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	outline: inherit;
+	transform:scale(1.2);
+}
+
+
+

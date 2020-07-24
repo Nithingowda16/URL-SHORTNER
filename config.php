@@ -1,7 +1,7 @@
 <?php
 	$host = '127.0.0.1';
-    $dbuser = 'username'; 
-    $dbpass = 'password';
-    $dbname = 'databasename';
+    $dbuser = 'private'; 
+    $dbpass = 'private';
+    $dbname = 'private';
     $siteurl = 'https://nith.ml'; 
 ?>

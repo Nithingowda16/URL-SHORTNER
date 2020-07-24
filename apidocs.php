@@ -110,6 +110,30 @@
                 <br><br>
           </div>
           <div class="container"><br>
+              <h3>Javascript - fetch()</h3><br>
+              <div class="container code p-5 jsxhr">
+                <br>var myHeaders = new Headers();
+<br>
+				<br>var formdata = new FormData();
+				<br>formdata.append("submit", "true");
+				<br>formdata.append("link", "<span class="url">http://longurl.com</span>");
+				<br>formdata.append("user", "<span class="user">0</span>");
+<br>
+				<br>var requestOptions = {
+        			<br>method: 'POST',
+        			<br>headers: myHeaders,
+        			<br>body: formdata,
+        			<br>redirect: 'follow'
+				<br>};
+<br>
+				<br>fetch("https://nith.ml/API.php", requestOptions)
+        		<br>	.then(response => response.text())
+        		<br>	.then(result => console.log(result))
+        		<br>	.catch(error => console.log('error', error));
+              </div>
+          </div>
+    
+    		<div class="container"><br>
               <h3>Javascript - XHR</h3><br>
               <div class="container code p-5 jsxhr">
                 var data = new FormData();<br>

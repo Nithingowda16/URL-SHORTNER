@@ -15,6 +15,8 @@ if (isset($_POST['submit'])){
 }
 
 function setdb(){
+ 	include 'config.php';
+
 	$connect = new mysqli($host, $dbuser, $dbpass, $dbname);
     $title = generateRandomString();
   	if (substr($_POST['textarea'], 0, 4) != "http") {

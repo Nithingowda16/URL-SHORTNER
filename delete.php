@@ -12,7 +12,7 @@
     	$query = "SELECT user FROM links WHERE title='".$_GET["title"]."'";
         $result = $conn->query($query);
         $row = $result->fetch_assoc();
-        $user = substr($row["user"],10,11)."9481599862".substr($row["user"],0,10)."4342039881";
+        $user = substr($row["user"],10,11)."private".substr($row["user"],0,10)."private";
         if($_GET["user"] == $user){
             $query = "DELETE FROM links WHERE title='".$_GET["title"]."'";
             $result = $conn->query($query);

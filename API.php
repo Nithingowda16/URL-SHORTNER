@@ -32,6 +32,8 @@ if (isset($_POST['submit'])){
 }
 
 function setdb(){
+ 	include 'config.php';
+
 	$connect = new mysqli($host, $dbuser, $dbpass, $dbname);
     $title = generateRandomString();
   	if (substr($_POST['link'], 0, 4) != "http") {
@@ -53,7 +55,7 @@ function setdb(){
         } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
         }
-        $myObj->url = $siteurl.$title;
+        $myObj->url = $siteurl.'/'.$title;
         $myJSON = json_encode($myObj);
         echo $myJSON;
     }

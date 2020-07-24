@@ -151,7 +151,8 @@
             <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="200">
               <i class="bx bxs-server"></i>
               <h4>100% uptime</h4>
-              <p>We try provide 24 x 7 uptime of our servers</p>
+              <p>We try provide 24 x 7 uptime of our servers. <br> <a href="https://status.nith.ml" target="_blank">Click to check our uptime status and history</a></p>
+             
             </div>
             <div class="icon-box mt-5" data-aos="fade-up" data-aos-delay="300">
               <i class="bx bx-link"></i>
@@ -313,28 +314,27 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="mail.php" method="post" role="form" class="php-email-form" data-aos="fade-left">
+            <form target="_blank" action="https://formsubmit.co/bf1f93f75e848faabe9bff639cfb7578" method="POST" role="form" class="php-email-form" data-aos="fade-left">
               <div class="form-row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="email" class="form-control" name="from" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                   <div class="validate"></div>
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" class="form-control" name="_subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                 <div class="validate"></div>
               </div>
+            <input type="hidden" name="_captcha" value="false">
               <div class="form-group">
-                <textarea class="form-control" name="body" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                 <div class="validate"></div>
               </div>
               <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message">This is a beta feature. Please contact us through the email provided above</div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
