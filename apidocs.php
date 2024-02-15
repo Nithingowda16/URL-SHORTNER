@@ -381,9 +381,7 @@
 
         </div>
       </section>
-
-
-<section id="pricing" class="pricing section-bg">
+	  <section id="pricing" class="pricing section-bg">
       <div class="container">
 		<?php
                   $conn = new mysqli($host, $dbuser, $dbpass, $dbname);
@@ -403,38 +401,28 @@
           <h2>Stats</h2>
           <p>Refresh the page to see them update</p>
         </div>
-
         <div class="row">
-
-          <div class="col-lg-4 col-md-6" style="margin-bottom:10px;">
+<div Class="col-lg-4 col-md-6" style="margin-bottom:10px;">
             <div class="box" data-aos="zoom-in" data-aos-delay="100">
             <h3>Links till date</h3>
               <h4><?php echo $links + 200;?><span> links</span></h4>
             </div>
           </div>
-
           <div class="col-lg-4 col-md-6" style="margin-bottom:10px;">
             <div class="box" data-aos="zoom-in" data-aos-delay="100">
             <h3>Total redirections</h3>
               <h4><?php echo $clicks;?><span> redirections</span></h4>
             </div>
           </div>
-        
         <div class="col-lg-4 col-md-6">
             <div class="box" data-aos="zoom-in" data-aos-delay="100">
             <h3>Server uptime</h3>
               <h4><?php echo floor(preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')) / 3600);?><span> hours</span></h4>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
-  
-
-
-
     <section id="contact" class="contact section-bg">
       <div class="container">
 
@@ -520,10 +508,7 @@
             <p>The Shortest URL Shortner</p>
           </div>
         </div>
-
-        
-
-        <div class="social-links">
+ <div class="social-links">
           <a href="https://twitter.com/Techin_Studio" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="https://www.facebook.com/hackernithin" class="facebook"><i class="bx bxl-facebook"></i></a>
           <a href="https://www.instagram.com/nithin_s.gowda/" class="instagram"><i class="bx bxl-instagram"></i></a>
@@ -562,8 +547,7 @@
           for(U of urlList){
               U.innerHTML = url 
           }
-      }
-  </script>
+      }  </script>
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -574,7 +558,5 @@
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/js/main.js"></script>
-
 </body>
-
 </html>
